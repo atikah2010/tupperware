@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Belajar Bareng?</title>
+<style>
+    body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
+        overflow: hidden;
+    }
+
+    h1 {
+        margin-top: 50px;
+        color: #ff4d6d;
+    }
+
+    .container {
+        margin-top: 40px;
+    }
+
+    button {
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #yesBtn {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    #noBtn {
+        background-color: #ff4d4d;
+        color: white;
+        position: absolute;
+    }
+
+    /* stiker lucu */
+    .sticker {
+        position: absolute;
+        width: 80px;
+        animation: float 3s infinite ease-in-out;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+</style>
+</head>
+<body>
+
+<h1>Apakah kamu mau belajar dengan saya? 📚✨</h1>
+
+<div class="container">
+    <button id="yesBtn">YES 😆</button>
+    <button id="noBtn">NO 😢</button>
+</div>
+
+<!-- stiker lucu -->
+<img src="https://cdn-icons-png.flaticon.com/512/742/742751.png" class="sticker" style="top:20px; left:20px;">
+<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="sticker" style="bottom:20px; right:20px;">
+<img src="https://cdn-icons-png.flaticon.com/512/742/742920.png" class="sticker" style="top:100px; right:50px;">
+
+<script>
+let noCount = 0;
+
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+// posisi awal tombol NO
+noBtn.style.top = "300px";
+noBtn.style.left = "50%";
+
+// fungsi tombol NO
+noBtn.addEventListener("click", function() {
+    noCount++;
+
+    // tombol YES makin besar
+    let size = 18 + noCount * 5;
+    yesBtn.style.fontSize = size + "px";
+    yesBtn.style.padding = (15 + noCount * 5) + "px " + (30 + noCount * 10) + "px";
+
+    // tombol NO kabur ke posisi random
+    let x = Math.random() * window.innerWidth * 0.8;
+    let y = Math.random() * window.innerHeight * 0.8;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+// fungsi tombol YES
+yesBtn.addEventListener("click", function() {
+    document.body.innerHTML = "<h1>Yeyy! Kita belajar bareng! 🤩📚</h1>";
+});
+</script>
+
+</body>
+</html>
